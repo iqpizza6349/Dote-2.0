@@ -21,6 +21,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Builder
 @ToString
+@EqualsAndHashCode
 @Document(collection = "member")
 @AllArgsConstructor @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Member {

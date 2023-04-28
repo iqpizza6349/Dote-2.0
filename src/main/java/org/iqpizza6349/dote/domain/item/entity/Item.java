@@ -14,7 +14,6 @@ import org.springframework.data.mongodb.core.mapping.Field;
  * Item properties is next below...
  * <p>
  *     id               -> primary key that generate by 'seq' collection
- *     seq              -> remember primary key('id'), which is make auto_increment
  *     name             -> item's name
  *     number_of_votes  -> literal number of votes
  * </p>
@@ -22,18 +21,18 @@ import org.springframework.data.mongodb.core.mapping.Field;
 @Getter
 @Builder
 @ToString
+@EqualsAndHashCode
 @Document(collection = "item")
 @AllArgsConstructor @NoArgsConstructor(access = AccessLevel.PROTECTED)
 public class Item {
 
     @Id
-    private Long id;
-
-    private Long seq;
+    private String id;
 
     private String name;
 
+    @Builder.Default
     @Field(name = "number_of_votes")
-    private String numberOfVotes;
+    private long numberOfVotes = 0;
 
 }
