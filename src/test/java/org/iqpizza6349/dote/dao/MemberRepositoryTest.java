@@ -16,13 +16,13 @@ import static org.assertj.core.api.Assertions.*;
 @DataMongoTest
 @DirtiesContext
 @TestPropertySource(properties = {"spring.config.location=classpath:application-test.properties"})
-public class MemberRepositoryTest {
+class MemberRepositoryTest {
 
     @Autowired
     private MemberRepository repository;
 
-    @DisplayName("회원 도큐먼트에 객체 삽입")
     @Test
+    @DisplayName("회원 도큐먼트에 객체 삽입")
     void insertMember() {
         // given
         final String name = "iqpizza6349";
@@ -47,12 +47,11 @@ public class MemberRepositoryTest {
                     assertThat(member.getName()).isEqualTo(name);
                 })
                 .expectComplete()
-                .log()
                 .verify();
     }
 
-    @DisplayName("회원 도큐먼트에서 객체 조회")
     @Test
+    @DisplayName("회원 도큐먼트에서 객체 조회")
     void selectMember() {
         // given
         final String fakeId = "1234567";
@@ -65,12 +64,11 @@ public class MemberRepositoryTest {
                 .create(memberMono)
                 .expectNextCount(0)
                 .expectComplete()
-                .log()
                 .verify();
     }
 
-    @DisplayName("회원 도큐먼트에서 컬렉션 삭제")
     @Test
+    @DisplayName("회원 도큐먼트에서 컬렉션 삭제")
     void removeMember() {
         // given
         final Member fakeMember = new Member("1", 1, 1, 1, "test");
@@ -83,7 +81,6 @@ public class MemberRepositoryTest {
                 .create(deleteMono)
                 .expectNextCount(0)
                 .expectComplete()
-                .log()
                 .verify();
     }
 }
