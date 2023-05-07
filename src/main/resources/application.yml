@@ -4,3 +4,12 @@ spring:
     mongodb:
       uri: mongodb://${HOST}:${PORT}/${DATABASE}
       database: ${DATABASE}
+
+oauth2:
+  dodam:
+    client-id: ${OAUTH2_DODAM_CLIENT_ID}
+    client-secret: ${OAUTH2_DODAM_CLIENT_SECRET}
+
+jwt:
+  access-secret: ${JWT_ACCESS_SECRET}
+  refresh-secret: ${JWT_REFRESH_SECRET}
